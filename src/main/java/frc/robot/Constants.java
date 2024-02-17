@@ -13,6 +13,10 @@ import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.math.util.Units;
 
 public final class Constants {
+  // Motor IDs (non-module)
+  public static final int intakeID = 20;
+  public static final int conveyorID_1 = 21;
+  public static final int conveyorID_2 = 22;
 
   public static enum Mode {
     REAL,

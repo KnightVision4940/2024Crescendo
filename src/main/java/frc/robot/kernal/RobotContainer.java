@@ -21,9 +21,14 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.SwerveConstants.ModuleConstants;
+import frc.robot.commands.IntakeNote;
+import frc.robot.commands.OuttakeNote;
+import frc.robot.commands.RunConveyor;
 import frc.robot.commands.SwerveJoystickCmd;
 import frc.robot.commands.TuningCommands.SwerveGetModuleOffsets;
 import frc.robot.commands.TuningCommands.SwerveSolveFeedForward;
+import frc.robot.subsystems.Conveyor;
+import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.PoseEstimatorSubsystem.SwervePoseEstimator;
 import frc.robot.subsystems.SwerveDriveSubsystem.SwerveDrive;
 import frc.robot.subsystems.SwerveDriveSubsystem.SwerveModuleNEO;
@@ -31,6 +36,8 @@ import frc.robot.subsystems.SwerveDriveSubsystem.SwerveModuleSim;
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 
 public class RobotContainer {
+  public static Intake intake = new Intake();
+  public static Conveyor conveyor = new Conveyor();
 
   // Controller
   private final CommandXboxController m_driverController;
@@ -154,7 +161,6 @@ public class RobotContainer {
             () -> (m_isFieldOriented)));
 
     // m_swerveDrive.setDefaultCommand(new SwerveGetModuleOffsets(m_swerveDrive));
-
     new JoystickButton(m_driverController.getHID(), Button.kX.value)
         .onTrue(
             new SequentialCommandGroup(
@@ -173,6 +179,19 @@ public class RobotContainer {
 
     // new JoystickButton(m_driverController.getHID(), Button.kB.value)
     //     .whileTrue(new SimplePathPlanner(m_swervePoseEstimator));
+
+    // Define joystick inputs/bindings
+
+    JoystickButton rBumper = new JoystickButton(m_driverController.getHID(), 6);
+    JoystickButton bButton = new JoystickButton(m_driverController.getHID(), 2);
+    JoystickButton lBumper = new JoystickButton(m_driverController.getHID(), 12);
+
+    // Run intake/outtake command on input
+    rBumper.whileTrue(new IntakeNote());
+    bButton.whileTrue(new OuttakeNote());
+
+    // Run conveyor on input
+    lBumper.whileTrue(new RunConveyor());
 
     m_autoChooser.addDefaultOption("Do Nothing", new InstantCommand());
     m_autoChooser.addOption(
