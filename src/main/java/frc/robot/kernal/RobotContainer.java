@@ -18,9 +18,12 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.SwerveConstants.ModuleConstants;
+import frc.robot.commands.ClimbMotorUp;
+import frc.robot.commands.ClimbMotorDown;
 import frc.robot.commands.IntakeNote;
 import frc.robot.commands.OuttakeNote;
 import frc.robot.commands.RunConveyor;
@@ -185,7 +188,8 @@ public class RobotContainer {
     JoystickButton rBumper = new JoystickButton(m_driverController.getHID(), 6);
     JoystickButton bButton = new JoystickButton(m_driverController.getHID(), 2);
     JoystickButton lBumper = new JoystickButton(m_driverController.getHID(), 12);
-
+    m_driverController.povUp().onTrue(new ClimbMotorUp());
+    m_driverController.povDown().onTrue(new ClimbMotorDown());
     // Run intake/outtake command on input
     rBumper.whileTrue(new IntakeNote());
     bButton.whileTrue(new OuttakeNote());

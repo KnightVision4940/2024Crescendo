@@ -17,6 +17,8 @@ public final class Constants {
   public static final int intakeID = 20;
   public static final int conveyorID_1 = 21;
   public static final int conveyorID_2 = 22;
+  public static final int climbMotorID_1 = 23;
+  public static final int climbMotorID_2 = 24;
 
   public static enum Mode {
     REAL,
