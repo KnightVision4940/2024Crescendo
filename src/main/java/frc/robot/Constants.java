@@ -19,6 +19,8 @@ public final class Constants {
   public static final int conveyorID_2 = 22;
   public static final int climbMotorID_1 = 23;
   public static final int climbMotorID_2 = 24;
+  public static final int shooterID_1 = 25;
+  public static final int shooterID_2 = 26;
 
   public static enum Mode {
     REAL,
@@ -91,7 +93,7 @@ public final class Constants {
     ////////////////
     // Driving Speed
     public static final double kMaxSpeedMetersPerSecond = 3; // 3.0
-    public static final double kMaxSpeedAngularRadiansPerSecond = Math.PI * 1; // 1.5
+    public static final double kMaxSpeedAngularRadiansPerSecond = Math.PI * 1.5; // 1.5
 
     public static final double kMaxAccelerationMetersPerSecondsSquared = 3;
 

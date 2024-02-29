@@ -9,19 +9,22 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class Intake extends SubsystemBase {
+public class Shooter extends SubsystemBase {
 
-  static WPI_TalonSRX RollerMotor = new WPI_TalonSRX(Constants.intakeID);
+  static WPI_TalonSRX ShootingMotor_1 = new WPI_TalonSRX(Constants.shooterID_1);
+  static WPI_TalonSRX ShootingMotor_2 = new WPI_TalonSRX(Constants.shooterID_2);
 
-  /** Creates a new Intake. */
-  public Intake() {}
+  /** Creates a new Shooter. */
+  public Shooter() {}
 
   public static void run(double speed) {
-    RollerMotor.set(ControlMode.PercentOutput, speed);
+    ShootingMotor_1.set(ControlMode.PercentOutput, speed);
+    ShootingMotor_2.set(ControlMode.PercentOutput, -speed);
   }
 
   public static void cancel() {
-    RollerMotor.set(ControlMode.PercentOutput, 0);
+    ShootingMotor_1.set(ControlMode.PercentOutput, 0);
+    ShootingMotor_2.set(ControlMode.PercentOutput, 0);
   }
 
   @Override

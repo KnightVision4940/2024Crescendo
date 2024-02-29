@@ -21,6 +21,11 @@ public class Conveyor extends SubsystemBase {
     ConveyorMotor2.set(ControlMode.PercentOutput, 0.25);
   }
 
+  public static void cancel() {
+    ConveyorMotor1.set(ControlMode.PercentOutput, 0);
+    ConveyorMotor2.set(ControlMode.PercentOutput, 0);
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

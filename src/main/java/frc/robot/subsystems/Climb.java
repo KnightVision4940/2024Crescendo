@@ -16,13 +16,14 @@ public class Climb extends SubsystemBase {
   /** Creates a new Climb. */
   public Climb() {}
 
-  public static void up() {
-    ClimbMotor1.set(ControlMode.PercentOutput, 0.25);
-    ClimbMotor2.set(ControlMode.PercentOutput, 0.25);
+  public static void run(double speed) {
+    ClimbMotor1.set(ControlMode.PercentOutput, speed);
+    ClimbMotor2.set(ControlMode.PercentOutput, -speed);
   }
-  public static void down() {
-    ClimbMotor1.set(ControlMode.PercentOutput, -0.25);
-    ClimbMotor2.set(ControlMode.PercentOutput, -0.25);
+
+  public static void cancel() {
+    ClimbMotor1.set(ControlMode.PercentOutput, 0);
+    ClimbMotor2.set(ControlMode.PercentOutput, 0);
   }
 
   @Override

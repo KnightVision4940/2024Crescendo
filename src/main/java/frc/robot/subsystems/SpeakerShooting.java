@@ -4,11 +4,23 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class SpeakerShooting extends SubsystemBase {
+
+  static WPI_TalonSRX ShootingMotor_1 = new WPI_TalonSRX(Constants.shooterID_1);
+  static WPI_TalonSRX ShootingMotor_2 = new WPI_TalonSRX(Constants.shooterID_2);
+
   /** Creates a new SpeakerShooting. */
   public SpeakerShooting() {}
+
+  public static void run() {
+    ShootingMotor_1.set(ControlMode.PercentOutput, 0.25);
+    ShootingMotor_1.set(ControlMode.PercentOutput, -0.25);
+  }
 
   @Override
   public void periodic() {

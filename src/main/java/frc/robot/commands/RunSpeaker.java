@@ -6,14 +6,13 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.kernal.RobotContainer;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 
-public class OuttakeNote extends Command {
-  /** Creates a new RunIntake. */
-  public OuttakeNote() {
-    addRequirements(RobotContainer.intake);
+public class RunSpeaker extends Command {
+  /** Creates a new RunSpeaker. */
+  public RunSpeaker() {
     // Use addRequirements() here to declare subsystem dependencies.
-
+    addRequirements(RobotContainer.shooter);
   }
 
   // Called when the command is initially scheduled.
@@ -23,13 +22,13 @@ public class OuttakeNote extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Intake.run(-0.50);
+    Shooter.run(0.50);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Intake.cancel();
+    Shooter.cancel();
   }
 
   // Returns true when the command should end.
