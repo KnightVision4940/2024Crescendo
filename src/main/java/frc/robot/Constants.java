@@ -126,8 +126,8 @@ public final class Constants {
     // Robot Track Width and Base Width
     //
     // This is measured wheel to wheel. The robot *should* be a square.
-    public static final double kTrackWidthMeters = Units.inchesToMeters(28.0);
-    public static final double kWheelBaseWidthMeters = Units.inchesToMeters(28.0);
+    public static final double kTrackWidthMeters = Units.inchesToMeters(24.0);
+    public static final double kWheelBaseWidthMeters = Units.inchesToMeters(24.0);
 
     //////////////////////////
     // Swerve Drive Kinematics

@@ -28,7 +28,6 @@ import frc.robot.commands.ClimbMotorUp;
 import frc.robot.commands.IntakeNote;
 import frc.robot.commands.OuttakeNote;
 import frc.robot.commands.RunAmp;
-import frc.robot.commands.RunConveyor;
 import frc.robot.commands.RunSpeaker;
 import frc.robot.commands.SwerveJoystickCmd;
 import frc.robot.commands.TuningCommands.SwerveGetModuleOffsets;
@@ -174,9 +173,8 @@ public class RobotContainer {
             () -> (rightJoystickX * Math.abs(rightJoystickX)),
             () -> (m_isFieldOriented)));
 
-    // m_swerveDrive.setDefaultCommand(new SwerveGetModuleOffsets(m_swerveDrive));
+    //  m_swerveDrive.setDefaultCommand(new SwerveGetModuleOffsets(m_swerveDrive));
 
-    // x is already mapped - pineapple
     new JoystickButton(m_driverController.getHID(), Button.kX.value)
         .onTrue(
             new SequentialCommandGroup(
@@ -206,20 +204,18 @@ public class RobotContainer {
     JoystickButton yButton = new JoystickButton(m_driverController.getHID(), 4);
 
     m_driverController.leftTrigger(0.1).onTrue(new IntakeNote());
-    m_driverController.rightTrigger(0.1).onTrue(new )
+    m_driverController.rightTrigger(0.1).onTrue(new RunSpeaker());
     m_driverController.povUp().whileTrue(new ClimbMotorUp());
     m_driverController.povDown().whileTrue(new ClimbMotorDown());
 
     // Run intake/outtake command on input
-    rBumper.whileTrue(new IntakeNote());
-    bButton.whileTrue(new OuttakeNote());
+    rBumper.whileTrue(new RunAmp());
+    // bButton.whileTrue(new OuttakeNote());
 
-    // Run conveyor on input
+    // Run  on input
     lBumper.whileTrue(new OuttakeNote());
 
     // Run Amp/Speaker Shooting
-    aButton.whileTrue(new RunAmp());
-    xButton.whileTrue(new RunSpeaker());
 
     NamedCommands.registerCommand("IntakeNote", new IntakeNote());
     m_autoChooser.addDefaultOption("Do Nothing", new InstantCommand());

@@ -13,15 +13,24 @@ public class Intake extends SubsystemBase {
 
   static WPI_TalonSRX RollerMotor = new WPI_TalonSRX(Constants.intakeID);
 
+  static WPI_TalonSRX ConveyorMotor1 = new WPI_TalonSRX(Constants.conveyorID_1);
+  static WPI_TalonSRX ConveyorMotor2 = new WPI_TalonSRX(Constants.conveyorID_2);
+
   /** Creates a new Intake. */
   public Intake() {}
 
-  public static void run(double speed) {
-    RollerMotor.set(ControlMode.PercentOutput, speed);
+  public static void run(double intakeSpeed, double conveyorSpeed) {
+    RollerMotor.set(ControlMode.PercentOutput, intakeSpeed);
+
+    ConveyorMotor1.set(ControlMode.PercentOutput, conveyorSpeed);
+    ConveyorMotor2.set(ControlMode.PercentOutput, conveyorSpeed);
   }
 
   public static void cancel() {
     RollerMotor.set(ControlMode.PercentOutput, 0);
+
+    ConveyorMotor1.set(ControlMode.PercentOutput, 0);
+    ConveyorMotor2.set(ControlMode.PercentOutput, 0);
   }
 
   @Override
