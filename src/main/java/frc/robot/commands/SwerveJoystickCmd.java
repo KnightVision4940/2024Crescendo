@@ -17,6 +17,7 @@ import frc.robot.subsystems.SwerveDriveSubsystem.SwerveDrive;
 import java.util.function.Supplier;
 import org.littletonrobotics.junction.Logger;
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
+import org.littletonrobotics.junction.networktables.LoggedDashboardNumber;
 
 public class SwerveJoystickCmd extends Command {
 
@@ -70,6 +71,9 @@ public class SwerveJoystickCmd extends Command {
   public void execute() {
     double xDir = m_xDrivePercentFunction.get();
     double yDir = m_yDrivePercentFunction.get();
+    // System.out.println(m_swerveSubsystem.m_gyro.getAngle());
+    LoggedDashboardNumber rotationOutput =
+        new LoggedDashboardNumber("Angle", m_swerveSubsystem.m_gyro.getAngle());
 
     // Using the deadband here instead of the controllers
     // improves the control over the direction of the robot
@@ -110,11 +114,14 @@ public class SwerveJoystickCmd extends Command {
               translation.getX(),
               translation.getY(),
               angularVelocity,
-              //gyro rotation
+              // gyro rotation
+              // m_swerveSubsystem.getRotGyro()
+
               m_poseEstimator // This is used to compensate for skew when driving and turning.
                   // No idea how this works, but it does.
-                  
-                  .getPose().getRotation()
+
+                  .getPose()
+                  .getRotation()
                   .plus(
                       new Rotation2d(
                           m_swerveSubsystem.getAngularVelocity()

@@ -23,6 +23,7 @@ public class RunSpeaker extends Command {
   @Override
   public void execute() {
     Shooter.run(0.50, 0.25);
+
   }
 
   // Called once the command ends or is interrupted.
@@ -35,5 +36,6 @@ public class RunSpeaker extends Command {
   @Override
   public boolean isFinished() {
     return false;
+
   }
 }

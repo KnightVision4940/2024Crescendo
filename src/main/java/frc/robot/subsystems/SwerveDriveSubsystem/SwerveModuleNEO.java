@@ -43,6 +43,8 @@ public class SwerveModuleNEO implements SwerveModuleIO {
     m_driveDefaultEncoder = m_driveMotor.getEncoder();
     m_turnRelativeEncoder = m_turnMotor.getEncoder();
 
+    m_turnMotor.setIdleMode(IdleMode.kBrake);
+
     m_driveMotor.setInverted(driveMotorReversed);
     m_turnMotor.setInverted(turnMotorReversed);
 

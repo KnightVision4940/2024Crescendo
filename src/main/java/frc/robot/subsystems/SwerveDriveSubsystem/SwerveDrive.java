@@ -25,7 +25,7 @@ import org.littletonrobotics.junction.Logger;
 public class SwerveDrive extends SubsystemBase {
 
   private final SwerveModuleIO[] m_modules = new SwerveModuleIO[4];
-  private final AHRS m_gyro;
+  public AHRS m_gyro;
   // IO Modules can't be defined in constructor, so they are defined here
   private final SwerveModuleIOInputsAutoLogged[] m_modulesInput = {
     new SwerveModuleIOInputsAutoLogged(),
@@ -191,6 +191,10 @@ public class SwerveDrive extends SubsystemBase {
   public void resetGyro() {
     m_gyro.reset();
     m_heading = Rotation2d.fromDegrees(-m_gyro.getAngle());
+  }
+
+  public Rotation2d getRotGyro() {
+    return m_gyro.getRotation2d();
   }
 
   // Slew rate filter variables for controlling lateral acceleration

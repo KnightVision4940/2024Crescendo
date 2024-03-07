@@ -5,14 +5,19 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 import frc.robot.kernal.RobotContainer;
-import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Intake;
+import edu.wpi.first.wpilibj.RobotController;
 
-public class RunAmp extends Command {
-  /** Creates a new RunAmp. */
-  public RunAmp() {
+
+public class IntakeAuto extends Command {
+  double m_startTime;
+  /** Creates a new RunIntake. */
+  public IntakeAuto() {
+    addRequirements(RobotContainer.intake);
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.shooter);
+
   }
 
   // Called when the command is initially scheduled.
@@ -22,18 +27,24 @@ public class RunAmp extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Shooter.run(0.10, 0.25);
+    Intake.run(-0.65, 0.40);
+
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Shooter.cancel();
+    Intake.cancel();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    double currentTime = RobotController.getFPGATime() / 1000.0;
+    if ( (currentTime - m_startTime) <= Constants.intakeTime ) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

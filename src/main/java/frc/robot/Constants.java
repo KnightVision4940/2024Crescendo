@@ -22,6 +22,10 @@ public final class Constants {
   public static final int shooterID_1 = 25;
   public static final int shooterID_2 = 26;
 
+  // Speaker time
+  public static final int speakerTime = 7;
+  public static final int intakeTime = 5;
+
   public static enum Mode {
     REAL,
     SIMULATOR

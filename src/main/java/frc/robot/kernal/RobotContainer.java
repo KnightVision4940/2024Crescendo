@@ -29,6 +29,8 @@ import frc.robot.commands.IntakeNote;
 import frc.robot.commands.OuttakeNote;
 import frc.robot.commands.RunAmp;
 import frc.robot.commands.RunSpeaker;
+import frc.robot.commands.IntakeAuto;
+import frc.robot.commands.RunSpeakerAuto;
 import frc.robot.commands.SwerveJoystickCmd;
 import frc.robot.commands.TuningCommands.SwerveGetModuleOffsets;
 import frc.robot.commands.TuningCommands.SwerveSolveFeedForward;
@@ -57,7 +59,6 @@ public class RobotContainer {
 
   private final SwerveDrive m_swerveDrive;
   private final SwervePoseEstimator m_swervePoseEstimator;
-
   private final LoggedDashboardChooser<Command> m_autoChooser =
       new LoggedDashboardChooser<>("Auto Routine");
 
@@ -198,7 +199,7 @@ public class RobotContainer {
 
     JoystickButton rBumper = new JoystickButton(m_driverController.getHID(), 6);
     JoystickButton bButton = new JoystickButton(m_driverController.getHID(), 2);
-    JoystickButton lBumper = new JoystickButton(m_driverController.getHID(), 12);
+    JoystickButton lBumper = new JoystickButton(m_driverController.getHID(), 5);
     JoystickButton aButton = new JoystickButton(m_driverController.getHID(), 1);
     JoystickButton xButton = new JoystickButton(m_driverController.getHID(), 3);
     JoystickButton yButton = new JoystickButton(m_driverController.getHID(), 4);
@@ -217,15 +218,22 @@ public class RobotContainer {
 
     // Run Amp/Speaker Shooting
 
-    NamedCommands.registerCommand("IntakeNote", new IntakeNote());
+    NamedCommands.registerCommand("IntakeNote", new IntakeAuto());
+
+    NamedCommands.registerCommand("RunSpeaker", new RunSpeakerAuto());
+    NamedCommands.registerCommand("RunAmp", new RunAmp());
+
+
     m_autoChooser.addDefaultOption("Do Nothing", new InstantCommand());
     m_autoChooser.addOption(
         "[TUNING] Get Module Offsets", new SwerveGetModuleOffsets(m_swerveDrive));
     m_autoChooser.addOption(
         "[TUNING] Get Swerve FF Characteristics", new SwerveSolveFeedForward(m_swerveDrive));
-    m_autoChooser.addOption("Top", new PathPlannerAuto("ALL PATHS - DOWN"));
-    m_autoChooser.addOption("Top", new PathPlannerAuto("ALL PATHS - MIDDLE"));
+    m_autoChooser.addOption("Down", new PathPlannerAuto("ALL PATHS - DOWN"));
+    m_autoChooser.addOption("Middle", new PathPlannerAuto("ALL PATHS - MIDDLE"));
     m_autoChooser.addOption("Top", new PathPlannerAuto("ALL PATHS - TOP"));
+    m_autoChooser.addOption(
+        "Test1", new PathPlannerAuto("START TOP SHOOT ONE PIECE - TAKE MIDNOTE"));
   }
 
   public Command getAutonomousCommand() {

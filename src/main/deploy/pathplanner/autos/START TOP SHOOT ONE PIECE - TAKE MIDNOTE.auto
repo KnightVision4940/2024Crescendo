@@ -18,12 +18,6 @@
           }
         },
         {
-          "type": "wait",
-          "data": {
-            "waitTime": 0
-          }
-        },
-        {
           "type": "named",
           "data": {
             "name": "RunSpeaker"
@@ -44,20 +38,8 @@
                 "data": {
                   "name": "IntakeNote"
                 }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "PATH - MidNote to Speaker"
-                }
               }
             ]
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0
           }
         },
         {

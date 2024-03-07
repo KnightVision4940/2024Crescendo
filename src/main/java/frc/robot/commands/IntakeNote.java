@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.kernal.RobotContainer;
 import frc.robot.subsystems.Intake;
 
+
 public class IntakeNote extends Command {
   /** Creates a new RunIntake. */
   public IntakeNote() {
@@ -24,6 +25,7 @@ public class IntakeNote extends Command {
   @Override
   public void execute() {
     Intake.run(-0.65, 0.40);
+
   }
 
   // Called once the command ends or is interrupted.
