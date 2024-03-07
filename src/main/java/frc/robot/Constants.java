@@ -46,7 +46,7 @@ public final class Constants {
     // This controller is used for driving the robot. All
     // button remappings and other physical configs are done here.
     public static final int kDriverControllerPort = 0;
-    public static final double kSwerveDriveDeadband = 0.2;
+    public static final double kSwerveDriveDeadband = 0.15;
 
     ///////////////////////
     // Secondary Controller

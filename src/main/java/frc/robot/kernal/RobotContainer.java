@@ -25,11 +25,11 @@ import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.SwerveConstants.ModuleConstants;
 import frc.robot.commands.ClimbMotorDown;
 import frc.robot.commands.ClimbMotorUp;
+import frc.robot.commands.IntakeAuto;
 import frc.robot.commands.IntakeNote;
 import frc.robot.commands.OuttakeNote;
 import frc.robot.commands.RunAmp;
 import frc.robot.commands.RunSpeaker;
-import frc.robot.commands.IntakeAuto;
 import frc.robot.commands.RunSpeakerAuto;
 import frc.robot.commands.SwerveJoystickCmd;
 import frc.robot.commands.TuningCommands.SwerveGetModuleOffsets;
@@ -222,7 +222,6 @@ public class RobotContainer {
 
     NamedCommands.registerCommand("RunSpeaker", new RunSpeakerAuto());
     NamedCommands.registerCommand("RunAmp", new RunAmp());
-
 
     m_autoChooser.addDefaultOption("Do Nothing", new InstantCommand());
     m_autoChooser.addOption(

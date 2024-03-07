@@ -4,15 +4,15 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.kernal.RobotContainer;
 import frc.robot.subsystems.Intake;
-import edu.wpi.first.wpilibj.RobotController;
-
 
 public class IntakeAuto extends Command {
   double m_startTime;
+
   /** Creates a new RunIntake. */
   public IntakeAuto() {
     addRequirements(RobotContainer.intake);
@@ -28,7 +28,6 @@ public class IntakeAuto extends Command {
   @Override
   public void execute() {
     Intake.run(-0.65, 0.40);
-
   }
 
   // Called once the command ends or is interrupted.
@@ -41,7 +40,7 @@ public class IntakeAuto extends Command {
   @Override
   public boolean isFinished() {
     double currentTime = RobotController.getFPGATime() / 1000.0;
-    if ( (currentTime - m_startTime) <= Constants.intakeTime ) {
+    if ((currentTime - m_startTime) <= Constants.intakeTime) {
       return false;
     } else {
       return true;
