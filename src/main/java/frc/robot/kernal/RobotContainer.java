@@ -162,7 +162,7 @@ public class RobotContainer {
   boolean m_isFieldOriented = true;
 
   private void configureBindings() {
-    double rightJoystickX = -m_driverController.getRightX();
+    // double rightJoystickX = -m_driverController.getRightX();
 
     m_swerveDrive.setDefaultCommand(
         new SwerveJoystickCmd(
@@ -170,7 +170,7 @@ public class RobotContainer {
             m_swervePoseEstimator,
             () -> (-m_driverController.getLeftY()),
             () -> (-m_driverController.getLeftX()),
-            () -> (rightJoystickX * Math.abs(rightJoystickX)),
+            () -> (-m_driverController.getRightX()), // * Math.abs(rightJoystickX)),
             () -> (m_isFieldOriented)));
 
     //  m_swerveDrive.setDefaultCommand(new SwerveGetModuleOffsets(m_swerveDrive));
@@ -203,8 +203,8 @@ public class RobotContainer {
     JoystickButton xButton = new JoystickButton(m_driverController.getHID(), 3);
     JoystickButton yButton = new JoystickButton(m_driverController.getHID(), 4);
 
-    m_driverController.leftTrigger(0.1).onTrue(new IntakeNote());
-    m_driverController.rightTrigger(0.1).onTrue(new RunSpeaker());
+    m_driverController.leftTrigger(0.1).whileTrue(new IntakeNote());
+    m_driverController.rightTrigger(0.1).whileTrue(new RunSpeaker());
     m_driverController.povUp().whileTrue(new ClimbMotorUp());
     m_driverController.povDown().whileTrue(new ClimbMotorDown());
 
@@ -225,7 +225,7 @@ public class RobotContainer {
         "[TUNING] Get Swerve FF Characteristics", new SwerveSolveFeedForward(m_swerveDrive));
     m_autoChooser.addOption("Top", new PathPlannerAuto("ALL PATHS - DOWN"));
     m_autoChooser.addOption("Top", new PathPlannerAuto("ALL PATHS - MIDDLE"));
-    m_autoChooser.addOption("Top", new PathPlannerAuto("ALL PATHS - UP"));
+    m_autoChooser.addOption("Top", new PathPlannerAuto("ALL PATHS - TOP"));
   }
 
   public Command getAutonomousCommand() {

@@ -22,7 +22,7 @@ public class Intake extends SubsystemBase {
   public static void run(double intakeSpeed, double conveyorSpeed) {
     RollerMotor.set(ControlMode.PercentOutput, intakeSpeed);
 
-    ConveyorMotor1.set(ControlMode.PercentOutput, conveyorSpeed);
+    ConveyorMotor1.set(ControlMode.PercentOutput, -conveyorSpeed);
     ConveyorMotor2.set(ControlMode.PercentOutput, conveyorSpeed);
   }
 

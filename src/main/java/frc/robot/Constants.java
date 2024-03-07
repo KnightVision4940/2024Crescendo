@@ -15,8 +15,8 @@ import edu.wpi.first.math.util.Units;
 public final class Constants {
   // Motor IDs (non-module)
   public static final int intakeID = 20;
-  public static final int conveyorID_1 = 21;
-  public static final int conveyorID_2 = 22;
+  public static final int conveyorID_1 = 22;
+  public static final int conveyorID_2 = 21;
   public static final int climbMotorID_1 = 23;
   public static final int climbMotorID_2 = 24;
   public static final int shooterID_1 = 25;

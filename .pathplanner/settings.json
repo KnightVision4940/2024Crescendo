@@ -3,8 +3,8 @@
   "robotLength": 0.75,
   "holonomicMode": true,
   "pathFolders": [
-    "Updated Paths",
-    "PATHS"
+    "PATHS",
+    "Better Paths"
   ],
   "autoFolders": [
     "Updated Autos"

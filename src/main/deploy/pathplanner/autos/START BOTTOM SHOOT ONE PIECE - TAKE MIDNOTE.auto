@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.28,
-      "y": 1.85
+      "x": 1.39784299924834,
+      "y": 2.109768290783402
     },
     "rotation": 0
   },
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "PATH #1"
+            "pathName": "PATH - Bottom to speaker"
           }
         },
         {
@@ -36,7 +36,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "PATH #2"
+                  "pathName": "PATH - Speaker to MidNote"
                 }
               },
               {
@@ -48,7 +48,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "PATH #3"
+                  "pathName": "PATH - MidNote to Speaker"
                 }
               }
             ]

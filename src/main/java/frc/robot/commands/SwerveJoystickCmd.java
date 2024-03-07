@@ -110,10 +110,11 @@ public class SwerveJoystickCmd extends Command {
               translation.getX(),
               translation.getY(),
               angularVelocity,
+              //gyro rotation
               m_poseEstimator // This is used to compensate for skew when driving and turning.
                   // No idea how this works, but it does.
-                  .getPose()
-                  .getRotation()
+                  
+                  .getPose().getRotation()
                   .plus(
                       new Rotation2d(
                           m_swerveSubsystem.getAngularVelocity()

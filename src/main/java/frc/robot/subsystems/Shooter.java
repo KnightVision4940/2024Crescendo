@@ -14,17 +14,26 @@ public class Shooter extends SubsystemBase {
   static WPI_TalonSRX ShootingMotor_1 = new WPI_TalonSRX(Constants.shooterID_1);
   static WPI_TalonSRX ShootingMotor_2 = new WPI_TalonSRX(Constants.shooterID_2);
 
+  static WPI_TalonSRX ConveyorMotor1 = new WPI_TalonSRX(Constants.conveyorID_1);
+  static WPI_TalonSRX ConveyorMotor2 = new WPI_TalonSRX(Constants.conveyorID_2);
+
   /** Creates a new Shooter. */
   public Shooter() {}
 
-  public static void run(double speed) {
-    ShootingMotor_1.set(ControlMode.PercentOutput, speed);
-    ShootingMotor_2.set(ControlMode.PercentOutput, -speed);
+  public static void run(double speed, double conveyorSpeed) {
+    ShootingMotor_1.set(ControlMode.PercentOutput, -speed);
+    ShootingMotor_2.set(ControlMode.PercentOutput, speed);
+
+    ConveyorMotor1.set(ControlMode.PercentOutput, -conveyorSpeed);
+    ConveyorMotor2.set(ControlMode.PercentOutput, conveyorSpeed);
   }
 
   public static void cancel() {
     ShootingMotor_1.set(ControlMode.PercentOutput, 0);
     ShootingMotor_2.set(ControlMode.PercentOutput, 0);
+
+    ConveyorMotor1.set(ControlMode.PercentOutput, 0);
+    ConveyorMotor2.set(ControlMode.PercentOutput, 0);
   }
 
   @Override
