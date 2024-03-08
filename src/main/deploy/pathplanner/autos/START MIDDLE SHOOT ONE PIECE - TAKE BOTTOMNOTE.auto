@@ -18,15 +18,9 @@
           }
         },
         {
-          "type": "wait",
-          "data": {
-            "waitTime": 0
-          }
-        },
-        {
           "type": "named",
           "data": {
-            "name": "RunSpeaker"
+            "name": "RunSpeakerAuto"
           }
         },
         {
@@ -44,20 +38,14 @@
                 "data": {
                   "name": "IntakeNote"
                 }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "PATH - BottomNote to Speaker"
-                }
               }
             ]
           }
         },
         {
-          "type": "wait",
+          "type": "path",
           "data": {
-            "waitTime": 0
+            "pathName": "PATH - BottomNote to Speaker"
           }
         },
         {

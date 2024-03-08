@@ -9,21 +9,19 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class Climb extends SubsystemBase {
-  static WPI_TalonSRX ClimbMotorLeft = new WPI_TalonSRX(Constants.climbMotorID_Left);
-  static WPI_TalonSRX ClimbMotorRight = new WPI_TalonSRX(Constants.climbMotorID_Right);
+public class AmpMechanism extends SubsystemBase {
 
-  /** Creates a new Climb. */
-  public Climb() {}
+  static WPI_TalonSRX AmpMotor = new WPI_TalonSRX(Constants.ampID);
 
-  public static void run(double speed1, double speed2) {
-    ClimbMotorLeft.set(ControlMode.PercentOutput, speed1);
-    ClimbMotorRight.set(ControlMode.PercentOutput, -speed2);
+  /** Creates a new AmpMechanism. */
+  public AmpMechanism() {}
+
+  public static void runAmpMechanism() {
+    AmpMotor.set(ControlMode.PercentOutput, -0.30);
   }
 
   public static void cancel() {
-    ClimbMotorLeft.set(ControlMode.PercentOutput, 0);
-    ClimbMotorRight.set(ControlMode.PercentOutput, 0);
+    AmpMotor.set(ControlMode.PercentOutput, 0);
   }
 
   @Override

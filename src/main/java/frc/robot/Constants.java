@@ -17,10 +17,11 @@ public final class Constants {
   public static final int intakeID = 20;
   public static final int conveyorID_1 = 22;
   public static final int conveyorID_2 = 21;
-  public static final int climbMotorID_1 = 23;
-  public static final int climbMotorID_2 = 24;
+  public static final int climbMotorID_Left = 23;
+  public static final int climbMotorID_Right = 24;
   public static final int shooterID_1 = 25;
   public static final int shooterID_2 = 26;
+  public static final int ampID = 27;
 
   // Speaker time
   public static final int speakerTime = 7;

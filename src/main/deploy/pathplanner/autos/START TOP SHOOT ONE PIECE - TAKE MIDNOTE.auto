@@ -20,7 +20,7 @@
         {
           "type": "named",
           "data": {
-            "name": "RunSpeaker"
+            "name": "RunSpeakerAuto"
           }
         },
         {
@@ -36,16 +36,22 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "IntakeNote"
+                  "name": "IntakeAuto"
                 }
               }
             ]
           }
         },
         {
+          "type": "path",
+          "data": {
+            "pathName": "PATH - MidNote to Speaker"
+          }
+        },
+        {
           "type": "named",
           "data": {
-            "name": "RunSpeaker"
+            "name": "RunSpeakerAuto"
           }
         }
       ]

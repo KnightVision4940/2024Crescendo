@@ -20,7 +20,7 @@ public class Shooter extends SubsystemBase {
   /** Creates a new Shooter. */
   public Shooter() {}
 
-  public static void run(double speed, double conveyorSpeed) {
+  public static void runShooter(double speed, double conveyorSpeed) {
     ShootingMotor_1.set(ControlMode.PercentOutput, -speed);
     ShootingMotor_2.set(ControlMode.PercentOutput, speed);
 

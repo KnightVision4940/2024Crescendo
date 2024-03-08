@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.kernal.RobotContainer;
 import frc.robot.subsystems.Climb;
 
-public class ClimbMotorDown extends Command {
-  /** Creates a new ClimbMotorDown. */
-  public ClimbMotorDown() {
+public class LeftClimbMotorDown extends Command {
+  /** Creates a new LeftClimbMotorDown. */
+  public LeftClimbMotorDown() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.climb);
   }
@@ -22,7 +22,7 @@ public class ClimbMotorDown extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Climb.run(-0.50, -0.50);
+    Climb.run(0.5, 0);
   }
 
   // Called once the command ends or is interrupted.

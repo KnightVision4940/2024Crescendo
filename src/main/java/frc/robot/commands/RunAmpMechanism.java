@@ -6,13 +6,13 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.kernal.RobotContainer;
-import frc.robot.subsystems.Climb;
+import frc.robot.subsystems.AmpMechanism;
 
-public class ClimbMotorDown extends Command {
-  /** Creates a new ClimbMotorDown. */
-  public ClimbMotorDown() {
+public class RunAmpMechanism extends Command {
+  /** Creates a new RunAmpMechanism. */
+  public RunAmpMechanism() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.climb);
+    addRequirements(RobotContainer.amp_mechanism);
   }
 
   // Called when the command is initially scheduled.
@@ -22,13 +22,13 @@ public class ClimbMotorDown extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Climb.run(-0.50, -0.50);
+    AmpMechanism.runAmpMechanism();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Climb.cancel();
+    AmpMechanism.cancel();
   }
 
   // Returns true when the command should end.

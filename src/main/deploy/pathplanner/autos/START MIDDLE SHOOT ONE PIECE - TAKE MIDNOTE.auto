@@ -18,15 +18,9 @@
           }
         },
         {
-          "type": "wait",
-          "data": {
-            "waitTime": 0
-          }
-        },
-        {
           "type": "named",
           "data": {
-            "name": "RunSpeaker"
+            "name": "RunSpeakerAuto"
           }
         },
         {
@@ -42,34 +36,22 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "IntakeNote"
+                  "name": "IntakeAuto"
                 }
               }
             ]
           }
         },
         {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.0
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "CancelIntake"
-          }
-        },
-        {
           "type": "path",
           "data": {
-            "pathName": "PATH - Speaker to MidNote"
+            "pathName": "PATH - MidNote to Speaker"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "RunSpeaker"
+            "name": "RunSpeakerAuto"
           }
         }
       ]

@@ -22,7 +22,7 @@ public class ClimbMotorUp extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Climb.run(0.25);
+    Climb.run(0.50, 0.50);
   }
 
   // Called once the command ends or is interrupted.
