@@ -23,6 +23,8 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.SwerveConstants.ModuleConstants;
+import frc.robot.commands.ClimbMotorDown;
+import frc.robot.commands.ClimbMotorUp;
 import frc.robot.commands.IntakeAuto;
 import frc.robot.commands.IntakeNote;
 import frc.robot.commands.LeftClimbMotorDown;
@@ -221,29 +223,34 @@ public class RobotContainer {
         new InstantCommand(
             () -> {
               layoutChange = !layoutChange;
+              System.out.println(layoutChange);
             }));
 
     if (!layoutChange) {
       m_driverController.leftTrigger(0.1).whileTrue(new IntakeNote());
-      double lTriggerValue = m_driverController.getLeftTriggerAxis() * -0.5;
-      double rTriggerValue = m_driverController.getRightTriggerAxis() * -0.5;
       m_driverController.rightTrigger(0.1).whileTrue(new RunSpeaker());
-      // m_driverController.povUp().whileTrue(new ClimbMotorUp());
-      // m_driverController.povDown().whileTrue(new ClimbMotorDown());
+      m_driverController.povUp().whileTrue(new ClimbMotorUp());
+      m_driverController.povDown().whileTrue(new ClimbMotorDown());
       lBumper.whileTrue(new OuttakeNote());
       rBumper.whileTrue(new RunAmp());
     } else if (layoutChange) {
       m_driverController.leftTrigger(0.1).whileTrue(new LeftClimbMotorUp());
       m_driverController.rightTrigger(0.1).whileTrue(new RightClimbMotorUp());
-      lBumper.whileTrue(new LeftClimbMotorDown());
-      rBumper.whileTrue(new RightClimbMotorDown());
+      lBumper.whileTrue(new LeftClimbMotorUp());
+      rBumper.whileTrue(new RightClimbMotorUp());
+      m_driverController
+          .leftTrigger(0.1)
+          .whileTrue(new LeftClimbMotorDown(m_driverController.getLeftTriggerAxis()));
+      m_driverController
+          .rightTrigger(0.1)
+          .whileTrue(new RightClimbMotorDown(m_driverController.getRightTriggerAxis()));
     }
 
     aButton.whileTrue(new RunAmpMechanism());
 
     // Run intake/outtake command on input
-    // rBumper.whileTrue(new RunAmp());
-    // bButton.whileTrue(new OuttakeNote());
+    // rBumper.whileTrue(new RunAmp()); //
+    // bButton.whileTrue(new OuttakeNote()); //
 
     // Run  on input
     // lBumper.whileTrue(new OuttakeNote());

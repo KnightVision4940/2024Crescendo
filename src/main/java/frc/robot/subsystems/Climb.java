@@ -16,8 +16,11 @@ public class Climb extends SubsystemBase {
   /** Creates a new Climb. */
   public Climb() {}
 
-  public static void run(double speed1, double speed2) {
+  public static void runCML(double speed1) {
     ClimbMotorLeft.set(ControlMode.PercentOutput, speed1);
+  }
+
+  public static void runCMR(double speed2) {
     ClimbMotorRight.set(ControlMode.PercentOutput, -speed2);
   }
 
