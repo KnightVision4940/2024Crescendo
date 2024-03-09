@@ -299,14 +299,11 @@ public class RobotContainer {
         new PathPlannerAuto("START BOTTOM SHOOT ONE PIECE - TAKE BOTTOMNOTE"));
     // STRIGHT
     m_autoChooser.addOption(
-        "Start Top - Go Straight",
-        new PathPlannerAuto("START TOP - GO STRAIGHT"));
+        "Start Top - Go Straight", new PathPlannerAuto("START TOP - GO STRAIGHT"));
     m_autoChooser.addOption(
-        "Start Middle - Go Straight",
-        new PathPlannerAuto("START MIDDLE - GO STRAIGHT"));
+        "Start Middle - Go Straight", new PathPlannerAuto("START MIDDLE - GO STRAIGHT"));
     m_autoChooser.addOption(
-        "Start Bottom - Go Straight",
-        new PathPlannerAuto("START BOTTOM - GO STRAIGHT"));
+        "Start Bottom - Go Straight", new PathPlannerAuto("START BOTTOM - GO STRAIGHT"));
   }
 
   public Command getAutonomousCommand() {
