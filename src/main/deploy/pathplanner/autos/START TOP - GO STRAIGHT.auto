@@ -1,0 +1,25 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.4500649866439688,
+      "y": 6.297971679912826
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "PATH - START TOP - GO STRIGHT"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Updated Autos",
+  "choreoAuto": false
+}
