@@ -1,0 +1,58 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 2.4990594342090944,
+        "y": 4.1046482092964185
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.4990594342090944,
+        "y": 4.094360870426001
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 0.7502118262381892,
+        "y": 4.361831681056846
+      },
+      "prevControl": {
+        "x": 1.634922969094059,
+        "y": 4.660164508298942
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.0,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -59.07885382241254,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "Better Paths",
+  "previewStartingState": {
+    "rotation": -0.7161599454704023,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

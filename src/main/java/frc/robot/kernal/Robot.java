@@ -4,6 +4,7 @@
 
 package frc.robot.kernal;
 
+import com.pathplanner.lib.util.PPLibTelemetry;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.Constants;
@@ -43,9 +44,10 @@ public class Robot extends LoggedRobot {
     switch (Constants.kCurrentMode) {
         // Running on a real robot, log to a USB stick
       case REAL:
+        PPLibTelemetry.enableCompetitionMode();
         // TODO: Wait for fix
         // Logger.addDataReceiver(new WPILOGWriter("/media/sda1/"));
-        Logger.addDataReceiver(new NT4Publisher());
+        // Logger.addDataReceiver(new NT4Publisher());
         break;
 
         // Running a physics simulator, log to local folder
@@ -54,7 +56,6 @@ public class Robot extends LoggedRobot {
         Logger.addDataReceiver(new NT4Publisher());
         break;
     }
-
     Logger.start();
     m_robotContainer = new RobotContainer();
   }

@@ -184,11 +184,13 @@ public final class Constants {
       /////////////////
       // Module Offsets
       //
-      // Use SwerveGetModuleOffsets to find these values. //ALWAYS INNY
-      public static final Rotation2d kLeftFrontModuleOffset = Rotation2d.fromDegrees(18.30);
-      public static final Rotation2d kRightFrontModuleOffset = Rotation2d.fromDegrees(18.05);
-      public static final Rotation2d kLeftRearModuleOffset = Rotation2d.fromDegrees(18.33);
-      public static final Rotation2d kRightRearModuleOffset = Rotation2d.fromDegrees(18.26);
+      // Use SwerveGetModuleOffsets to find these values. //ALWAYS INNY FL: 17.33, FR: 17.13, RL:
+      // 17.35, RR: 17.38 ﻿
+
+      public static final Rotation2d kLeftFrontModuleOffset = Rotation2d.fromDegrees(17.33);
+      public static final Rotation2d kRightFrontModuleOffset = Rotation2d.fromDegrees(17.13);
+      public static final Rotation2d kLeftRearModuleOffset = Rotation2d.fromDegrees(17.35);
+      public static final Rotation2d kRightRearModuleOffset = Rotation2d.fromDegrees(17.38);
 
       //////////////////////
       // Drive PID Constants

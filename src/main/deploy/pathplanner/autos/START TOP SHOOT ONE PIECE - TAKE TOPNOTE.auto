@@ -2,21 +2,15 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.157621857228448,
-      "y": 6.736636374036107
+      "x": 0.6679131152748526,
+      "y": 6.707344943511942
     },
-    "rotation": 0
+    "rotation": 60.25511870305779
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
-        {
-          "type": "path",
-          "data": {
-            "pathName": "PATH - Top to speaker"
-          }
-        },
         {
           "type": "named",
           "data": {
@@ -30,7 +24,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "PATH - Speaker to TopNote"
+                  "pathName": "New PATH - Top to Tnote"
                 }
               },
               {
@@ -45,7 +39,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "PATH - TopNote to Speaker"
+            "pathName": "New PATH - Tnote to Top"
           }
         },
         {

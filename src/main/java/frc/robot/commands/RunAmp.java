@@ -22,7 +22,7 @@ public class RunAmp extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Shooter.runShooter(0.10, 0.25);
+    Shooter.runShooter(0.088, 0.25);
   }
 
   // Called once the command ends or is interrupted.

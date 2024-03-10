@@ -18,7 +18,6 @@ import frc.robot.Constants.PoseEstimatorConstants;
 import frc.robot.Constants.SwerveConstants;
 import frc.robot.subsystems.SwerveDriveSubsystem.SwerveDrive;
 import java.util.function.Supplier;
-import org.littletonrobotics.junction.Logger;
 
 /** Add your docs here. */
 public class SwervePoseEstimator extends SubsystemBase {
@@ -60,8 +59,8 @@ public class SwervePoseEstimator extends SubsystemBase {
   @Override
   public void periodic() {
 
-    Logger.recordOutput(
-        "SwervePoseEstimator/estimatedPose", m_poseEstimator.getEstimatedPosition());
+    // Logger.recordOutput(
+    //     "SwervePoseEstimator/estimatedPose", m_poseEstimator.getEstimatedPosition());
     m_poseEstimator.update(m_rotationSupplier.get(), m_swerveModulePositionSupplier.get());
     // System.out.println(m_visibleTagsSubscriber.get().length);
 
@@ -146,8 +145,8 @@ public class SwervePoseEstimator extends SubsystemBase {
         // double avgDistance = totalDistance / tagPoses.size();
 
         // System.out.print("Lodding");
-        Logger.recordOutput("SwervePoseEstimator/visionEstimatedPose", cameraPose.toPose2d());
-        Logger.recordOutput("SwervePoseEstimator/visionEstimatedPose3D", cameraPose);
+        // Logger.recordOutput("SwervePoseEstimator/visionEstimatedPose", cameraPose.toPose2d());
+        // Logger.recordOutput("SwervePoseEstimator/visionEstimatedPose3D", cameraPose);
         m_poseEstimator.addVisionMeasurement(cameraPose.toPose2d(), timestamp);
       }
     }

@@ -15,7 +15,6 @@ import frc.robot.Constants.SwerveConstants;
 import frc.robot.subsystems.PoseEstimatorSubsystem.SwervePoseEstimator;
 import frc.robot.subsystems.SwerveDriveSubsystem.SwerveDrive;
 import java.util.function.Supplier;
-import org.littletonrobotics.junction.Logger;
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 import org.littletonrobotics.junction.networktables.LoggedDashboardNumber;
 
@@ -133,9 +132,9 @@ public class SwerveJoystickCmd extends Command {
     SwerveModuleState[] moduleStates =
         SwerveConstants.kDriveKinematics.toSwerveModuleStates(chassisSpeeds);
 
-    Logger.recordOutput("SwerveJoystickCmd/expectedModuleStates", moduleStates);
-    Logger.recordOutput("SwerveJoystickCmd/expectedVelocity", linearVelocity);
-    Logger.recordOutput("SwerveJoystickCmd/expectedAngularVelocity", angularVelocity);
+    // Logger.recordOutput("SwerveJoystickCmd/expectedModuleStates", moduleStates);
+    // Logger.recordOutput("SwerveJoystickCmd/expectedVelocity", linearVelocity);
+    // Logger.recordOutput("SwerveJoystickCmd/expectedAngularVelocity", angularVelocity);
     m_swerveSubsystem.setModuleStates(moduleStates);
   }
 

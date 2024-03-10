@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.241177037061454,
-      "y": 3.8122050798808975
+      "x": 1.3777394973336319,
+      "y": 5.503726295673142
     },
     "rotation": 0.0
   },
@@ -11,12 +11,6 @@
     "type": "sequential",
     "data": {
       "commands": [
-        {
-          "type": "path",
-          "data": {
-            "pathName": "PATH - Mid to speaker"
-          }
-        },
         {
           "type": "named",
           "data": {
@@ -30,7 +24,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "PATH - Speaker to MidNote"
+                  "pathName": "New PATH - Middle to Mnote"
                 }
               },
               {

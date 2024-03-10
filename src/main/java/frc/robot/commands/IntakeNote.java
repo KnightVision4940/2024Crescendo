@@ -23,7 +23,7 @@ public class IntakeNote extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Intake.run(-0.65, 0.40);
+    Intake.run(-0.75, 0.45);
   }
 
   // Called once the command ends or is interrupted.

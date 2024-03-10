@@ -10,12 +10,9 @@ import frc.robot.subsystems.Climb;
 
 public class LeftClimbMotorDown extends Command {
   /** Creates a new LeftClimbMotorDown. */
-  double speed;
-
-  public LeftClimbMotorDown(double speed) {
+  public LeftClimbMotorDown() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.climb);
-    this.speed = speed;
   }
 
   // Called when the command is initially scheduled.
@@ -25,7 +22,7 @@ public class LeftClimbMotorDown extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Climb.runCML(speed);
+    Climb.runCML(0.50);
   }
 
   // Called once the command ends or is interrupted.

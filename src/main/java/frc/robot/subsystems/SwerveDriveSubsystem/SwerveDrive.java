@@ -20,7 +20,6 @@ import frc.robot.Constants;
 import frc.robot.Constants.Mode;
 import frc.robot.Constants.SwerveConstants;
 import frc.robot.Constants.SwerveConstants.ModuleConstants;
-import org.littletonrobotics.junction.Logger;
 
 public class SwerveDrive extends SubsystemBase {
 
@@ -97,7 +96,8 @@ public class SwerveDrive extends SubsystemBase {
   public void periodic() {
     for (int i = 0; i != 4; i++) {
       m_modules[i].updateInputs(m_modulesInput[i]);
-      Logger.processInputs("SwerveDrive/Modules/Module" + Integer.toString(i), m_modulesInput[i]);
+      // Logger.processInputs("SwerveDrive/Modules/Module" + Integer.toString(i),
+      // m_modulesInput[i]);
     }
 
     var chassisSpeeds = SwerveConstants.kDriveKinematics.toChassisSpeeds(getModuleStates());
@@ -109,9 +109,9 @@ public class SwerveDrive extends SubsystemBase {
       m_heading = m_heading.plus(Rotation2d.fromRadians(chassisRotationSpeed * 0.02));
     }
 
-    Logger.recordOutput("SwerveDrive/currentModuleStates", getModuleStates());
-    Logger.recordOutput("SwerveDrive/headingDegrees", m_heading.getDegrees());
-    Logger.recordOutput("SwerveDrive/headingRadians", m_heading.getRadians());
+    // Logger.recordOutput("SwerveDrive/currentModuleStates", getModuleStates());
+    // Logger.recordOutput("SwerveDrive/headingDegrees", m_heading.getDegrees());
+    // Logger.recordOutput("SwerveDrive/headingRadians", m_heading.getRadians());
   }
 
   public Pose2d getFieldVelocity() {

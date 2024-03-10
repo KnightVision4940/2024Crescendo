@@ -23,8 +23,6 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.SwerveConstants.ModuleConstants;
-import frc.robot.commands.ClimbMotorDown;
-import frc.robot.commands.ClimbMotorUp;
 import frc.robot.commands.IntakeAuto;
 import frc.robot.commands.IntakeNote;
 import frc.robot.commands.LeftClimbMotorDown;
@@ -229,8 +227,10 @@ public class RobotContainer {
     if (!layoutChange) {
       m_driverController.leftTrigger(0.1).whileTrue(new IntakeNote());
       m_driverController.rightTrigger(0.1).whileTrue(new RunSpeaker());
-      m_driverController.povUp().whileTrue(new ClimbMotorUp());
-      m_driverController.povDown().whileTrue(new ClimbMotorDown());
+      m_driverController.povUp().whileTrue(new RightClimbMotorUp());
+      m_driverController.povDown().whileTrue(new LeftClimbMotorDown());
+      m_driverController.povRight().whileTrue(new RightClimbMotorDown());
+      m_driverController.povLeft().whileTrue(new LeftClimbMotorUp());
       lBumper.whileTrue(new OuttakeNote());
       rBumper.whileTrue(new RunAmp());
     } else if (layoutChange) {
@@ -238,12 +238,6 @@ public class RobotContainer {
       m_driverController.rightTrigger(0.1).whileTrue(new RightClimbMotorUp());
       lBumper.whileTrue(new LeftClimbMotorUp());
       rBumper.whileTrue(new RightClimbMotorUp());
-      m_driverController
-          .leftTrigger(0.1)
-          .whileTrue(new LeftClimbMotorDown(m_driverController.getLeftTriggerAxis()));
-      m_driverController
-          .rightTrigger(0.1)
-          .whileTrue(new RightClimbMotorDown(m_driverController.getRightTriggerAxis()));
     }
 
     aButton.whileTrue(new RunAmpMechanism());
@@ -257,9 +251,9 @@ public class RobotContainer {
 
     // Run Amp/Speaker Shooting
 
-    NamedCommands.registerCommand("IntakeNote", new IntakeAuto());
+    NamedCommands.registerCommand("IntakeAuto", new IntakeAuto());
 
-    NamedCommands.registerCommand("RunSpeaker", new RunSpeakerAuto());
+    NamedCommands.registerCommand("RunSpeakerAuto", new RunSpeakerAuto());
     NamedCommands.registerCommand("RunAmp", new RunAmp());
 
     m_autoChooser.addDefaultOption("Do Nothing", new InstantCommand());
@@ -268,32 +262,32 @@ public class RobotContainer {
     m_autoChooser.addOption(
         "[TUNING] Get Swerve FF Characteristics", new SwerveSolveFeedForward(m_swerveDrive));
     // MIDDLE
-    m_autoChooser.addOption(
-        "Start Middle - Take TopNote",
-        new PathPlannerAuto("START MIDDLE SHOOT ONE PIECE - TAKE TOPNOTE"));
+    // m_autoChooser.addOption(
+    //    "Start Middle - Take TopNote",
+    //    new PathPlannerAuto("START MIDDLE SHOOT ONE PIECE - TAKE TOPNOTE"));
     m_autoChooser.addOption(
         "Start Middle - Take MidNote",
         new PathPlannerAuto("START MIDDLE SHOOT ONE PIECE - TAKE MIDNOTE"));
-    m_autoChooser.addOption(
-        "Start Middle - Take BottomNote",
-        new PathPlannerAuto("START MIDDLE SHOOT ONE PIECE - TAKE BOTTOMNOTE"));
+    // m_autoChooser.addOption(
+    //    "Start Middle - Take BottomNote",
+    //    new PathPlannerAuto("START MIDDLE SHOOT ONE PIECE - TAKE BOTTOMNOTE"));
     // TOP
     m_autoChooser.addOption(
         "Start Top - Take TopNote",
         new PathPlannerAuto("START TOP SHOOT ONE PIECE - TAKE TOPNOTE"));
-    m_autoChooser.addOption(
-        "Start Top - Take MidNote",
-        new PathPlannerAuto("START TOP SHOOT ONE PIECE - TAKE MIDNOTE"));
-    m_autoChooser.addOption(
-        "Start Top - Take BottomNote",
-        new PathPlannerAuto("START TOP SHOOT ONE PIECE - TAKE BOTTOMNOTE"));
+    // m_autoChooser.addOption(
+    //    "Start Top - Take MidNote",
+    //    new PathPlannerAuto("START TOP SHOOT ONE PIECE - TAKE MIDNOTE"));
+    // m_autoChooser.addOption(
+    //    "Start Top - Take BottomNote",
+    //    new PathPlannerAuto("START TOP SHOOT ONE PIECE - TAKE BOTTOMNOTE"));
     // BOTTOM
-    m_autoChooser.addOption(
-        "Start Bottom - Take TopNote",
-        new PathPlannerAuto("START BOTTOM SHOOT ONE PIECE - TAKE TOPNOTE"));
-    m_autoChooser.addOption(
-        "Start Bottom - Take MidNote",
-        new PathPlannerAuto("START BOTTOM SHOOT ONE PIECE - TAKE MIDNOTE"));
+    // m_autoChooser.addOption(
+    //    "Start Bottom - Take TopNote",
+    //    new PathPlannerAuto("START BOTTOM SHOOT ONE PIECE - TAKE TOPNOTE"));
+    // m_autoChooser.addOption(
+    //    "Start Bottom - Take MidNote",
+    //    new PathPlannerAuto("START BOTTOM SHOOT ONE PIECE - TAKE MIDNOTE"));
     m_autoChooser.addOption(
         "Start Bottom - Take BottomNote",
         new PathPlannerAuto("START BOTTOM SHOOT ONE PIECE - TAKE BOTTOMNOTE"));
