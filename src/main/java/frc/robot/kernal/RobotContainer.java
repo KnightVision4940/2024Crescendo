@@ -298,6 +298,11 @@ public class RobotContainer {
         "Start Middle - Go Straight", new PathPlannerAuto("START MIDDLE - GO STRAIGHT"));
     m_autoChooser.addOption(
         "Start Bottom - Go Straight", new PathPlannerAuto("START BOTTOM - GO STRAIGHT"));
+    // TEST
+    m_autoChooser.addOption(
+        "TEST - SHOOTER", new PathPlannerAuto("TEST - SHOOTER"));
+    m_autoChooser.addOption(
+        "TEST - AMP", new PathPlannerAuto("TEST - AMP"));
   }
 
   public Command getAutonomousCommand() {

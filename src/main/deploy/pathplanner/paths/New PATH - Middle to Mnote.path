@@ -16,28 +16,28 @@
     },
     {
       "anchor": {
-        "x": 2.0257443358488607,
-        "y": 5.553919733431884
+        "x": 2.405083862300426,
+        "y": 5.524739769858686
       },
       "prevControl": {
-        "x": 1.7961991295637385,
-        "y": 5.543607090546883
+        "x": 2.175538656015304,
+        "y": 5.514427126973685
       },
       "nextControl": {
-        "x": 2.214573072555615,
-        "y": 5.562403131362938
+        "x": 2.5939125990071803,
+        "y": 5.533223167789741
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.5196341119499284,
-        "y": 5.555162990025228
+        "x": 2.5218037165932152,
+        "y": 5.544193078907484
       },
       "prevControl": {
-        "x": 2.529921450820346,
-        "y": 5.54487565115481
+        "x": 2.5320910554636327,
+        "y": 5.533905740037066
       },
       "nextControl": null,
       "isLocked": false,
@@ -45,7 +45,19 @@
     }
   ],
   "rotationTargets": [],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "Speed Shift - Middle to Mnote",
+      "minWaypointRelativePos": 0.65,
+      "maxWaypointRelativePos": 1.1,
+      "constraints": {
+        "maxVelocity": 0.5,
+        "maxAcceleration": 3.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0
+      }
+    }
+  ],
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,

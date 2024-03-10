@@ -1,0 +1,25 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.336590141851963,
+      "y": 5.503726295673142
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "RunSpeakerAuto"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Updated Autos",
+  "choreoAuto": false
+}
