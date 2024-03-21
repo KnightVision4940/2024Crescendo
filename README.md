@@ -1,7 +1,8 @@
 # Improvements for 2024-2025 Season / Things We Did Wrong
 - [ ] READ DOCUMENTATION!
-- [ ] We had a code that runs a process once then when 
-   it repeats it doubles which ate alot of our cpu power.
+- [ ] The shuffleboard code that returns the Gyro Angle would run a process once, then double 
+      everytime as it repeats that command (eg. 1-->2-->4...). 
+      - This ate a lot of our CPU power during comp.
 - [ ] Subsystems should be kept concise and consistent. This includes naming conventions, 
       paramater inputs (especially positive vs. negative values), and instances of commands.
    - Eg. Conveyor should not be in Intake.java, Conveyor.java, AND Shooter.java
@@ -15,7 +16,10 @@
       before running it; think of how the code would run in theory. 
 
 # Things We Did Good
-- Make working code
-- Make sure to put comments so you do not get lost
-- Use coding Bible (If it is lost, go find it)
- 
+- The robot can move
+
+# Checklist for 2024-2025 Season
+- [ ] Update WPILib to 2025
+- [ ] Make working code
+- [ ] Make sure to put comments so you do not get lost
+- [ ] Use coding Bible (If it is lost, go find it)
