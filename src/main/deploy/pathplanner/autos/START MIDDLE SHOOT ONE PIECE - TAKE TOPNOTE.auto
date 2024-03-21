@@ -38,6 +38,12 @@
                 "data": {
                   "name": "IntakeAuto"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PositionNoteAuto"
+                }
               }
             ]
           }

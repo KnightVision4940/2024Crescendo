@@ -16,9 +16,9 @@ public class Conveyor extends SubsystemBase {
   /** Creates a new Conveyor. */
   public Conveyor() {}
 
-  public static void run() {
-    ConveyorMotor1.set(ControlMode.PercentOutput, 0.25);
-    ConveyorMotor2.set(ControlMode.PercentOutput, 0.25);
+  public static void run(double speed) {
+    ConveyorMotor1.set(ControlMode.PercentOutput, -speed);
+    ConveyorMotor2.set(ControlMode.PercentOutput, speed);
   }
 
   public static void cancel() {

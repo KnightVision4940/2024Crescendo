@@ -4,36 +4,49 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 import frc.robot.kernal.RobotContainer;
-import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Intake;
 
-public class RunSpeaker extends Command {
-  /** Creates a new RunSpeaker. */
-  public RunSpeaker() {
+public class OuttakeAuto extends Command {
+  double m_startTime;
+
+  /** Creates a new RunIntake. */
+  public OuttakeAuto() {
+    addRequirements(RobotContainer.intake);
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.shooter);
+    System.out.println("outtake auto");
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    m_startTime = Timer.getFPGATimestamp();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Shooter.runShooter(0.55, 0.27); // prev: 0.50, 0.25
+    Intake.run(0.65, -0.40);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Shooter.cancel();
+    Intake.cancel();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    double currentTime = Timer.getFPGATimestamp();
+    // double currentTime = RobotController.getFPGATime() / 1000.0;
+    if ((currentTime - m_startTime) <= Constants.outtakeTime) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

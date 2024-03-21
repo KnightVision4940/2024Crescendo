@@ -24,8 +24,9 @@ public final class Constants {
   public static final int ampID = 27;
 
   // Speaker time
-  public static final int speakerTime = 7;
+  public static final int speakerTime = 2;
   public static final int intakeTime = 5;
+  public static final double outtakeTime = 0.3;
 
   public static enum Mode {
     REAL,
@@ -97,7 +98,7 @@ public final class Constants {
   public static final class SwerveConstants {
     ////////////////
     // Driving Speed
-    public static final double kMaxSpeedMetersPerSecond = 3; // 3.0
+    public static final double kMaxSpeedMetersPerSecond = 4; // 3.0
     public static final double kMaxSpeedAngularRadiansPerSecond = Math.PI * 1.5; // 1.5
 
     public static final double kMaxAccelerationMetersPerSecondsSquared = 3;
@@ -184,13 +185,13 @@ public final class Constants {
       /////////////////
       // Module Offsets
       //
-      // Use SwerveGetModuleOffsets to find these values. //ALWAYS INNY FL: 17.33, FR: 17.13, RL:
-      // 17.35, RR: 17.38 ﻿
+      // Use SwerveGetModuleOffsets to find these values.//FL: 17.60, FR: 17.33, RL: 17.59, RR:
+      // 17.63 ﻿
 
-      public static final Rotation2d kLeftFrontModuleOffset = Rotation2d.fromDegrees(17.33);
-      public static final Rotation2d kRightFrontModuleOffset = Rotation2d.fromDegrees(17.13);
-      public static final Rotation2d kLeftRearModuleOffset = Rotation2d.fromDegrees(17.35);
-      public static final Rotation2d kRightRearModuleOffset = Rotation2d.fromDegrees(17.38);
+      public static final Rotation2d kLeftFrontModuleOffset = Rotation2d.fromDegrees(17.60);
+      public static final Rotation2d kRightFrontModuleOffset = Rotation2d.fromDegrees(17.33);
+      public static final Rotation2d kLeftRearModuleOffset = Rotation2d.fromDegrees(17.59);
+      public static final Rotation2d kRightRearModuleOffset = Rotation2d.fromDegrees(17.63);
 
       //////////////////////
       // Drive PID Constants

@@ -16,7 +16,6 @@ import frc.robot.subsystems.PoseEstimatorSubsystem.SwervePoseEstimator;
 import frc.robot.subsystems.SwerveDriveSubsystem.SwerveDrive;
 import java.util.function.Supplier;
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
-import org.littletonrobotics.junction.networktables.LoggedDashboardNumber;
 
 public class SwerveJoystickCmd extends Command {
 
@@ -71,8 +70,8 @@ public class SwerveJoystickCmd extends Command {
     double xDir = m_xDrivePercentFunction.get();
     double yDir = m_yDrivePercentFunction.get();
     // System.out.println(m_swerveSubsystem.m_gyro.getAngle());
-    LoggedDashboardNumber rotationOutput =
-        new LoggedDashboardNumber("Angle", m_swerveSubsystem.m_gyro.getAngle());
+    // LoggedDashboardNumber rotationOutput = new LoggedDashboardNumber("Angle",
+    // m_swerveSubsystem.m_gyro.getAngle());
 
     // Using the deadband here instead of the controllers
     // improves the control over the direction of the robot

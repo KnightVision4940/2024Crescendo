@@ -4,7 +4,7 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.RobotController;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.kernal.RobotContainer;
@@ -17,12 +17,13 @@ public class RunSpeakerAuto extends Command {
   public RunSpeakerAuto() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.shooter);
+    System.out.println("in Runspeakerauto");
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_startTime = RobotController.getFPGATime() / 1000.0;
+    m_startTime = Timer.getFPGATimestamp();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -40,7 +41,7 @@ public class RunSpeakerAuto extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    double currentTime = RobotController.getFPGATime() / 1000.0;
+    double currentTime = Timer.getFPGATimestamp();
     if ((currentTime - m_startTime) <= Constants.speakerTime) {
       return false;
     } else {

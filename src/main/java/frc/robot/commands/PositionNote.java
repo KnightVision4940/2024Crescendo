@@ -4,36 +4,47 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.kernal.RobotContainer;
-import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Conveyor;
 
-public class RunSpeaker extends Command {
-  /** Creates a new RunSpeaker. */
-  public RunSpeaker() {
+public class PositionNote extends Command {
+  double m_startTime;
+
+  /** Creates a new PositionNote. */
+  public PositionNote() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.shooter);
+    addRequirements(RobotContainer.conveyor);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    m_startTime = Timer.getFPGATimestamp();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Shooter.runShooter(0.55, 0.27); // prev: 0.50, 0.25
+    Conveyor.run(-0.20);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Shooter.cancel();
+    Conveyor.cancel();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    double currentTime = Timer.getFPGATimestamp();
+    // double currentTime = RobotController.getFPGATime() / 1000.0;
+    if ((currentTime - m_startTime) <= 0.5) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

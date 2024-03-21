@@ -14,6 +14,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotBase;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
@@ -23,11 +24,15 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.SwerveConstants.ModuleConstants;
+import frc.robot.commands.ClimbMotorDown;
+import frc.robot.commands.ClimbMotorUp;
 import frc.robot.commands.IntakeAuto;
 import frc.robot.commands.IntakeNote;
 import frc.robot.commands.LeftClimbMotorDown;
 import frc.robot.commands.LeftClimbMotorUp;
 import frc.robot.commands.OuttakeNote;
+import frc.robot.commands.PositionNote;
+import frc.robot.commands.PositionNoteAuto;
 import frc.robot.commands.RightClimbMotorDown;
 import frc.robot.commands.RightClimbMotorUp;
 import frc.robot.commands.RunAmp;
@@ -62,6 +67,7 @@ public class RobotContainer {
 
   // Controller
   private final CommandXboxController m_driverController;
+  private final XboxController driveController;
   // private final CommandXboxController m_operatorController;
 
   private final SwerveDrive m_swerveDrive;
@@ -70,6 +76,12 @@ public class RobotContainer {
       new LoggedDashboardChooser<>("Auto Routine");
 
   public RobotContainer() {
+    NamedCommands.registerCommand("IntakeAuto", new IntakeAuto());
+
+    NamedCommands.registerCommand("RunSpeakerAuto", new RunSpeakerAuto());
+    NamedCommands.registerCommand("RunAmp", new RunAmp());
+    NamedCommands.registerCommand("IntakeAuto", new PositionNoteAuto());
+
     // Setup controllers depending on the current mode
     switch (Constants.kCurrentMode) {
       case REAL:
@@ -128,7 +140,13 @@ public class RobotContainer {
     }
 
     m_driverController = new CommandXboxController(ControllerConstants.kDriverControllerPort);
+    driveController = new XboxController(ControllerConstants.kDriverControllerPort);
+
     // m_operatorController = new
+
+    // RUMBLE Code here:
+    // driveController.setRumble(RumbleType.kBothRumble, 0.4);
+
     // CommandXboxController(ControllerConstants.kOperatorControllerPort);
 
     m_swervePoseEstimator = new SwervePoseEstimator(m_swerveDrive);
@@ -221,16 +239,21 @@ public class RobotContainer {
         new InstantCommand(
             () -> {
               layoutChange = !layoutChange;
-              System.out.println(layoutChange);
+              // configureBindings();
             }));
 
     if (!layoutChange) {
       m_driverController.leftTrigger(0.1).whileTrue(new IntakeNote());
+      m_driverController.leftTrigger(0.1).onFalse(new PositionNote());
+
       m_driverController.rightTrigger(0.1).whileTrue(new RunSpeaker());
       m_driverController.povUp().whileTrue(new RightClimbMotorUp());
       m_driverController.povDown().whileTrue(new LeftClimbMotorDown());
       m_driverController.povRight().whileTrue(new RightClimbMotorDown());
       m_driverController.povLeft().whileTrue(new LeftClimbMotorUp());
+      m_driverController.povUpLeft().whileTrue(new ClimbMotorUp());
+      m_driverController.povDownRight().whileTrue(new ClimbMotorDown());
+
       lBumper.whileTrue(new OuttakeNote());
       rBumper.whileTrue(new RunAmp());
     } else if (layoutChange) {
@@ -251,10 +274,10 @@ public class RobotContainer {
 
     // Run Amp/Speaker Shooting
 
-    NamedCommands.registerCommand("IntakeAuto", new IntakeAuto());
+    // NamedCommands.registerCommand("IntakeAuto", new IntakeAuto());
 
-    NamedCommands.registerCommand("RunSpeakerAuto", new RunSpeakerAuto());
-    NamedCommands.registerCommand("RunAmp", new RunAmp());
+    // NamedCommands.registerCommand("RunSpeakerAuto", new RunSpeakerAuto());
+    // NamedCommands.registerCommand("RunAmp", new RunAmp());
 
     m_autoChooser.addDefaultOption("Do Nothing", new InstantCommand());
     m_autoChooser.addOption(
@@ -299,10 +322,8 @@ public class RobotContainer {
     m_autoChooser.addOption(
         "Start Bottom - Go Straight", new PathPlannerAuto("START BOTTOM - GO STRAIGHT"));
     // TEST
-    m_autoChooser.addOption(
-        "TEST - SHOOTER", new PathPlannerAuto("TEST - SHOOTER"));
-    m_autoChooser.addOption(
-        "TEST - AMP", new PathPlannerAuto("TEST - AMP"));
+    m_autoChooser.addOption("TEST - SHOOTER", new PathPlannerAuto("TEST - SHOOTER"));
+    m_autoChooser.addOption("TEST - INTAKEAUTO", new PathPlannerAuto("TEST - INTAKEAUTO"));
   }
 
   public Command getAutonomousCommand() {
