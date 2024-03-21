@@ -10,6 +10,7 @@ import com.pathplanner.lib.commands.PathPlannerAuto;
 import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -48,7 +49,6 @@ import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.PoseEstimatorSubsystem.SwervePoseEstimator;
 import frc.robot.subsystems.Shooter;
-import frc.robot.subsystems.SpeakerShooting;
 import frc.robot.subsystems.SwerveDriveSubsystem.SwerveDrive;
 import frc.robot.subsystems.SwerveDriveSubsystem.SwerveModuleNEO;
 import frc.robot.subsystems.SwerveDriveSubsystem.SwerveModuleSim;
@@ -60,7 +60,6 @@ public class RobotContainer {
   public static Conveyor conveyor = new Conveyor();
   public static Climb climb = new Climb();
   public static Shooter shooter = new Shooter();
-  public static SpeakerShooting speaker_shooting = new SpeakerShooting();
   public static AmpMechanism amp_mechanism = new AmpMechanism();
 
   boolean layoutChange = false;
@@ -81,6 +80,10 @@ public class RobotContainer {
     NamedCommands.registerCommand("RunSpeakerAuto", new RunSpeakerAuto());
     NamedCommands.registerCommand("RunAmp", new RunAmp());
     NamedCommands.registerCommand("IntakeAuto", new PositionNoteAuto());
+
+    // Camera
+    CameraServer.startAutomaticCapture();
+    System.out.println("Here123");
 
     // Setup controllers depending on the current mode
     switch (Constants.kCurrentMode) {
