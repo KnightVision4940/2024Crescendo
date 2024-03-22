@@ -14,6 +14,7 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
@@ -41,8 +42,6 @@ import frc.robot.commands.RunAmpMechanism;
 import frc.robot.commands.RunSpeaker;
 import frc.robot.commands.RunSpeakerAuto;
 import frc.robot.commands.SwerveJoystickCmd;
-import frc.robot.commands.TuningCommands.SwerveGetModuleOffsets;
-import frc.robot.commands.TuningCommands.SwerveSolveFeedForward;
 import frc.robot.subsystems.AmpMechanism;
 import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.Conveyor;
@@ -66,7 +65,7 @@ public class RobotContainer {
 
   // Controller
   private final CommandXboxController m_driverController;
-  private final XboxController driveController;
+  public static XboxController driveController;
   // private final CommandXboxController m_operatorController;
 
   private final SwerveDrive m_swerveDrive;
@@ -82,8 +81,10 @@ public class RobotContainer {
     NamedCommands.registerCommand("IntakeAuto", new PositionNoteAuto());
 
     // Camera
-    CameraServer.startAutomaticCapture();
+    // CameraServer.startAutomaticCapture();
     System.out.println("Here123");
+
+    
 
     // Setup controllers depending on the current mode
     switch (Constants.kCurrentMode) {
@@ -145,10 +146,9 @@ public class RobotContainer {
     m_driverController = new CommandXboxController(ControllerConstants.kDriverControllerPort);
     driveController = new XboxController(ControllerConstants.kDriverControllerPort);
 
-    // m_operatorController = new
+   // driveController.setRumble(RumbleType.kBothRumble, 1);
 
-    // RUMBLE Code here:
-    // driveController.setRumble(RumbleType.kBothRumble, 0.4);
+    // m_operatorController = new
 
     // CommandXboxController(ControllerConstants.kOperatorControllerPort);
 
@@ -283,24 +283,27 @@ public class RobotContainer {
     // NamedCommands.registerCommand("RunAmp", new RunAmp());
 
     m_autoChooser.addDefaultOption("Do Nothing", new InstantCommand());
-    m_autoChooser.addOption(
-        "[TUNING] Get Module Offsets", new SwerveGetModuleOffsets(m_swerveDrive));
-    m_autoChooser.addOption(
-        "[TUNING] Get Swerve FF Characteristics", new SwerveSolveFeedForward(m_swerveDrive));
+    // m_autoChooser.addOption(
+    //    "[TUNING] Get Module Offsets", new SwerveGetModuleOffsets(m_swerveDrive));
+    // m_autoChooser.addOption(
+    //    "[TUNING] Get Swerve FF Characteristics", new SwerveSolveFeedForward(m_swerveDrive));
     // MIDDLE
     // m_autoChooser.addOption(
     //    "Start Middle - Take TopNote",
     //    new PathPlannerAuto("START MIDDLE SHOOT ONE PIECE - TAKE TOPNOTE"));
     m_autoChooser.addOption(
+        "Start Top - Take TopNote",
+        new PathPlannerAuto("START TOP SHOOT ONE PIECE - TAKE TOPNOTE"));
+    m_autoChooser.addOption(
         "Start Middle - Take MidNote",
         new PathPlannerAuto("START MIDDLE SHOOT ONE PIECE - TAKE MIDNOTE"));
+    m_autoChooser.addOption(
+        "Start Bottom - Take BottomNote",
+        new PathPlannerAuto("START BOTTOM SHOOT ONE PIECE - TAKE BOTTOMNOTE"));
     // m_autoChooser.addOption(
     //    "Start Middle - Take BottomNote",
     //    new PathPlannerAuto("START MIDDLE SHOOT ONE PIECE - TAKE BOTTOMNOTE"));
     // TOP
-    m_autoChooser.addOption(
-        "Start Top - Take TopNote",
-        new PathPlannerAuto("START TOP SHOOT ONE PIECE - TAKE TOPNOTE"));
     // m_autoChooser.addOption(
     //    "Start Top - Take MidNote",
     //    new PathPlannerAuto("START TOP SHOOT ONE PIECE - TAKE MIDNOTE"));
@@ -314,9 +317,6 @@ public class RobotContainer {
     // m_autoChooser.addOption(
     //    "Start Bottom - Take MidNote",
     //    new PathPlannerAuto("START BOTTOM SHOOT ONE PIECE - TAKE MIDNOTE"));
-    m_autoChooser.addOption(
-        "Start Bottom - Take BottomNote",
-        new PathPlannerAuto("START BOTTOM SHOOT ONE PIECE - TAKE BOTTOMNOTE"));
     // STRIGHT
     m_autoChooser.addOption(
         "Start Top - Go Straight", new PathPlannerAuto("START TOP - GO STRAIGHT"));
@@ -325,8 +325,8 @@ public class RobotContainer {
     m_autoChooser.addOption(
         "Start Bottom - Go Straight", new PathPlannerAuto("START BOTTOM - GO STRAIGHT"));
     // TEST
-    m_autoChooser.addOption("TEST - SHOOTER", new PathPlannerAuto("TEST - SHOOTER"));
-    m_autoChooser.addOption("TEST - INTAKEAUTO", new PathPlannerAuto("TEST - INTAKEAUTO"));
+    // m_autoChooser.addOption("TEST - SHOOTER", new PathPlannerAuto("TEST - SHOOTER"));
+    // m_autoChooser.addOption("TEST - INTAKEAUTO", new PathPlannerAuto("TEST - INTAKEAUTO"));
   }
 
   public Command getAutonomousCommand() {

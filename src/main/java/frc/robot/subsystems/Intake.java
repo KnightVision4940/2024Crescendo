@@ -6,8 +6,10 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.kernal.RobotContainer;
 
 public class Intake extends SubsystemBase {
 
@@ -31,6 +33,14 @@ public class Intake extends SubsystemBase {
 
     ConveyorMotor1.set(ControlMode.PercentOutput, 0);
     ConveyorMotor2.set(ControlMode.PercentOutput, 0);
+  }
+
+  public static void rumbleOnSensor() {
+    RobotContainer.driveController.setRumble(RumbleType.kBothRumble, 0.3);
+  }
+
+  public static void cancelRumble() {
+    RobotContainer.driveController.setRumble(RumbleType.kBothRumble, 0);
   }
 
   @Override
