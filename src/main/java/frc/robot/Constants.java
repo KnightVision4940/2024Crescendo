@@ -24,9 +24,9 @@ public final class Constants {
   public static final int ampID = 27;
 
   // Speaker time
-  public static final int speakerTime = 2;
-  public static final int intakeTime = 5;
-  public static final double outtakeTime = 0.3;
+  public static final double speakerTime = 1.2;
+  public static final double intakeTime = 3;
+  public static final double outtakeTime = 2.5;
 
   public static enum Mode {
     REAL,

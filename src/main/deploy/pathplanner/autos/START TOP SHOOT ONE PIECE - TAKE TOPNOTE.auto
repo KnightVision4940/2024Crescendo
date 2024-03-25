@@ -37,15 +37,34 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "New PATH - Tnote to Top"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "PositionNote"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "New PATH - Tnote to Top"
+                }
+              }
+            ]
           }
         },
         {
           "type": "named",
           "data": {
             "name": "RunSpeakerAuto"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "New Path - TOP LEAVE"
           }
         }
       ]

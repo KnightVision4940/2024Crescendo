@@ -37,15 +37,34 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "PATH - MidNote to Speaker"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "PositionNote"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "PATH - MidNote to Speaker"
+                }
+              }
+            ]
           }
         },
         {
           "type": "named",
           "data": {
             "name": "RunSpeakerAuto"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "New Path - MIDDLE LEAVE"
           }
         }
       ]

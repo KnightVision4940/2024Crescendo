@@ -36,6 +36,16 @@ public class Shooter extends SubsystemBase {
     ConveyorMotor2.set(ControlMode.PercentOutput, 0);
   }
 
+  public static void blockNote() {
+    ShootingMotor_1.set(ControlMode.PercentOutput, 0.1);
+    ShootingMotor_2.set(ControlMode.PercentOutput, -0.1);
+  }
+
+  public static void cancelBlockNote() {
+    ShootingMotor_1.set(ControlMode.PercentOutput, 0);
+    ShootingMotor_2.set(ControlMode.PercentOutput, 0);
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

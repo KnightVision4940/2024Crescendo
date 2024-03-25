@@ -14,7 +14,6 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
@@ -34,7 +33,6 @@ import frc.robot.commands.LeftClimbMotorDown;
 import frc.robot.commands.LeftClimbMotorUp;
 import frc.robot.commands.OuttakeNote;
 import frc.robot.commands.PositionNote;
-import frc.robot.commands.PositionNoteAuto;
 import frc.robot.commands.RightClimbMotorDown;
 import frc.robot.commands.RightClimbMotorUp;
 import frc.robot.commands.RunAmp;
@@ -78,13 +76,11 @@ public class RobotContainer {
 
     NamedCommands.registerCommand("RunSpeakerAuto", new RunSpeakerAuto());
     NamedCommands.registerCommand("RunAmp", new RunAmp());
-    NamedCommands.registerCommand("IntakeAuto", new PositionNoteAuto());
+    NamedCommands.registerCommand("PositionNote", new PositionNote());
 
     // Camera
-    // CameraServer.startAutomaticCapture();
+    CameraServer.startAutomaticCapture();
     System.out.println("Here123");
-
-    
 
     // Setup controllers depending on the current mode
     switch (Constants.kCurrentMode) {
@@ -146,7 +142,7 @@ public class RobotContainer {
     m_driverController = new CommandXboxController(ControllerConstants.kDriverControllerPort);
     driveController = new XboxController(ControllerConstants.kDriverControllerPort);
 
-   // driveController.setRumble(RumbleType.kBothRumble, 1);
+    // driveController.setRumble(RumbleType.kBothRumble, 1);
 
     // m_operatorController = new
 
@@ -292,6 +288,9 @@ public class RobotContainer {
     //    "Start Middle - Take TopNote",
     //    new PathPlannerAuto("START MIDDLE SHOOT ONE PIECE - TAKE TOPNOTE"));
     m_autoChooser.addOption(
+        "TEST - POSITION NOTE AUTO", new PathPlannerAuto("START AND SHOOT MIDDLE - STAY MIDDLE"));
+
+    m_autoChooser.addOption(
         "Start Top - Take TopNote",
         new PathPlannerAuto("START TOP SHOOT ONE PIECE - TAKE TOPNOTE"));
     m_autoChooser.addOption(
@@ -325,8 +324,8 @@ public class RobotContainer {
     m_autoChooser.addOption(
         "Start Bottom - Go Straight", new PathPlannerAuto("START BOTTOM - GO STRAIGHT"));
     // TEST
-    // m_autoChooser.addOption("TEST - SHOOTER", new PathPlannerAuto("TEST - SHOOTER"));
-    // m_autoChooser.addOption("TEST - INTAKEAUTO", new PathPlannerAuto("TEST - INTAKEAUTO"));
+    m_autoChooser.addOption("TEST - SHOOTER", new PathPlannerAuto("TEST - SHOOTER"));
+    m_autoChooser.addOption("TEST - INTAKEAUTO", new PathPlannerAuto("TEST - INTAKEAUTO"));
   }
 
   public Command getAutonomousCommand() {

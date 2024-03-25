@@ -6,10 +6,11 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.kernal.RobotContainer;
+import frc.robot.subsystems.Intake;
 
-public class IntakeSensor extends Command {
+public class IntakeRumble extends Command {
   /** Creates a new IntakeSensor. */
-  public IntakeSensor() {
+  public IntakeRumble() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.intake);
   }
@@ -21,16 +22,14 @@ public class IntakeSensor extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // Artbitrary sensor code - update when we get sensor running
-
-    // if (sensor == true ) {
-    //   Intake.rumbleOnSensor();
-    // }
+    Intake.rumbleOnSensor();
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    Intake.cancelRumble();
+  }
 
   // Returns true when the command should end.
   @Override

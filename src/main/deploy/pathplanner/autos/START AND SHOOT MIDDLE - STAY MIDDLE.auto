@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7502118262381892,
-      "y": 4.361831681056846
+      "x": 1.3777394973336319,
+      "y": 5.503726295673142
     },
-    "rotation": -60.42216131873865
+    "rotation": 0.0
   },
   "command": {
     "type": "sequential",
@@ -24,7 +24,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "New PATH - Bottom to Bnote"
+                  "pathName": "New PATH - Middle to Mnote"
                 }
               },
               {
@@ -37,34 +37,9 @@
           }
         },
         {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "PositionNote"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "New PATH - Bnote to Bottom"
-                }
-              }
-            ]
-          }
-        },
-        {
           "type": "named",
           "data": {
-            "name": "RunSpeakerAuto"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "New Path - DOWN LEAVE"
+            "name": "PositionNote"
           }
         }
       ]
