@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 import frc.robot.kernal.RobotContainer;
 import frc.robot.subsystems.Conveyor;
 
@@ -27,7 +28,7 @@ public class PositionNote extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Conveyor.run(-0.20);
+    Conveyor.run(Constants.positionNoteSpeed);
   }
 
   // Called once the command ends or is interrupted.
@@ -41,7 +42,7 @@ public class PositionNote extends Command {
   public boolean isFinished() {
     double currentTime = Timer.getFPGATimestamp();
     // double currentTime = RobotController.getFPGATime() / 1000.0;
-    if ((currentTime - m_startTime) <= 0.5) {
+    if ((currentTime - m_startTime) <= Constants.positionNoteTime) {
       return false;
     } else {
       return true;

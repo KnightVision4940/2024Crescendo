@@ -17,7 +17,6 @@ public class RunSpeakerAuto extends Command {
   public RunSpeakerAuto() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.shooter);
-    System.out.println("in Runspeakerauto");
   }
 
   // Called when the command is initially scheduled.
@@ -29,7 +28,7 @@ public class RunSpeakerAuto extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Shooter.runShooter(0.50, 0.25);
+    Shooter.runShooter(Constants.runSpeakerAutoShootSpeed, Constants.runSpeakerAutoConveyorSpeed);
   }
 
   // Called once the command ends or is interrupted.

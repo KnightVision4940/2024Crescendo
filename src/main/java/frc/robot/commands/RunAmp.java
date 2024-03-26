@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 import frc.robot.kernal.RobotContainer;
 import frc.robot.subsystems.Shooter;
 
@@ -22,7 +23,7 @@ public class RunAmp extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Shooter.runShooter(0.088, 0.25);
+    Shooter.runShooter(Constants.runAmpShooterSpeed, Constants.runAmpConveyorSpeed);
   }
 
   // Called once the command ends or is interrupted.

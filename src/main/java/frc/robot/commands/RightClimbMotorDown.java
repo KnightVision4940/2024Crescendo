@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 import frc.robot.kernal.RobotContainer;
 import frc.robot.subsystems.Climb;
 
@@ -22,7 +23,7 @@ public class RightClimbMotorDown extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Climb.runCMR(0.50);
+    Climb.runCMR(Constants.rightCMD_Speed);
   }
 
   // Called once the command ends or is interrupted.

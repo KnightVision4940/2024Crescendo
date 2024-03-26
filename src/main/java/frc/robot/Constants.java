@@ -23,10 +23,43 @@ public final class Constants {
   public static final int shooterID_2 = 26;
   public static final int ampID = 27;
 
-  // Speaker time
-  public static final double speakerTime = 1.2;
-  public static final double intakeTime = 3;
-  public static final double outtakeTime = 2.5;
+  // Time limits
+  public static final double speakerTime = 1.20;
+  public static final double intakeTime = 3.00;
+  public static final double outtakeTime = 2.50;
+  public static final double positionNoteTime = 0.50;
+
+  // Teleop Speed Constants
+
+  // RunSpeaker()
+  public static final double runSpeakerShootSpeed = 0.55; // prev: 0.50
+  public static final double runSpeakerConveyorSpeed = 0.27; // 0.25
+
+  // RunAmpMechanism()
+  public static final double ampMechanismSpeed = -0.45;
+
+  // CMD/CMU()
+  public static final double leftCMD_Speed = 0.50;
+  public static final double leftCMU_Speed = -0.50;
+  public static final double rightCMD_Speed = 0.50;
+  public static final double rightCMU_Speed = -0.50;
+
+  // PositionNote()
+  public static final double positionNoteSpeed = -0.20;
+
+  // RunAmp()
+  public static final double runAmpShooterSpeed = 0.088;
+  public static final double runAmpConveyorSpeed = 0.25;
+
+  // Auto Speed constants
+
+  // RunSpeakerAuto()
+  public static final double runSpeakerAutoShootSpeed = 0.50;
+  public static final double runSpeakerAutoConveyorSpeed = 0.25;
+
+  // IntakeAuto()
+  public static final double intakeAutoIntakeSpeed = -0.65;
+  public static final double intakeAutoConveyorSpeed = 0.40;
 
   public static enum Mode {
     REAL,
@@ -98,7 +131,7 @@ public final class Constants {
   public static final class SwerveConstants {
     ////////////////
     // Driving Speed
-    public static final double kMaxSpeedMetersPerSecond = 4; // 3.0
+    public static final double kMaxSpeedMetersPerSecond = 3.0; // 3.0
     public static final double kMaxSpeedAngularRadiansPerSecond = Math.PI * 1.5; // 1.5
 
     public static final double kMaxAccelerationMetersPerSecondsSquared = 3;

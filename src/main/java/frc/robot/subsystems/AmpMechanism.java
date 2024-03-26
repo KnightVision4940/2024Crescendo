@@ -17,7 +17,7 @@ public class AmpMechanism extends SubsystemBase {
   public AmpMechanism() {}
 
   public static void runAmpMechanism() {
-    AmpMotor.set(ControlMode.PercentOutput, -0.45);
+    AmpMotor.set(ControlMode.PercentOutput, Constants.ampMechanismSpeed);
   }
 
   public static void cancel() {

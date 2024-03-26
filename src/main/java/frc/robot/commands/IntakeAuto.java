@@ -31,7 +31,7 @@ public class IntakeAuto extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Intake.run(-0.65, 0.40);
+    Intake.run(Constants.intakeAutoIntakeSpeed, Constants.intakeAutoConveyorSpeed);
     Shooter.blockNote();
   }
 

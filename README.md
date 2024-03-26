@@ -16,7 +16,7 @@
 - [ ] FPGATime is in Seconds, not milliseconds.
 
 # Things We Did Good
-- The robot can move...
+-
 
 # Checklist for 2024-2025 Season
 - [ ] Update WPILib to 2025
